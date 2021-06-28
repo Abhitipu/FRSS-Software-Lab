@@ -18,6 +18,8 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,  NavigationToolbar2Tk
 from test import *
 import unittest
+import os
+
 
 
 
@@ -944,7 +946,7 @@ def AdminPage(self):
     filepath = ""
 
     def openImage():
-        rightFrame.filename= filedialog.askopenfilename(initialdir = r'C:\Users\HP\Downloads\FRSSv2\FRSS' , title = 'select an image' , filetypes = (("jpg files" , "*.jpg"),))
+        rightFrame.filename= filedialog.askopenfilename(initialdir = os.path.join(os.getcwd() , "images") , title = 'select an image' , filetypes = (("jpg files" , "*.jpg"),))
         global filepath
         filepath = rightFrame.filename
         pass
@@ -1063,7 +1065,7 @@ def Login(self):
     passwordentry = Entry(login , show ='*', relief=FLAT)
     passwordentry.grid(row = 2 , column = 1)
     global lb
-    lb = Image.open("loginBtn.jpg")
+    lb = Image.open(os.path.join(os.getcwd() , "images\\loginBtn.jpg"))
     lb = lb.resize((150, 45))
     lb = ImageTk.PhotoImage(lb)
     completelogin = Button(login ,image = lb, command = adduser, bg=loginBg, relief=FLAT)
@@ -1236,7 +1238,7 @@ def Signup():
             testsignup(username)
             
     global sub
-    sub = Image.open("signupBtn.jpg")
+    sub = Image.open(os.path.join(os.getcwd() , "images\\signupBtn.jpg"))
     sub = sub.resize((150, 40))
     sub = ImageTk.PhotoImage(sub)
     addbutton = Button(signup,image=sub, command = adduser, width=150, height=40, bg="#ffdc73", relief=FLAT, state = DISABLED)
@@ -1252,7 +1254,7 @@ if __name__ == '__main__':
     mydb = mysql.connector.connect(host = "localhost",
 								user = "root",
 								passwd = "Mysql_20010316",
-                                database = "frss",)
+                                database = "frss")
     
     global my_cursor
     my_cursor = mydb.cursor()
@@ -1276,8 +1278,8 @@ if __name__ == '__main__':
 
     # my_cursor.execute("SELECT * FROM customers")
     # print(my_cursor.description)
-
-    background_image = Image.open("Wp1.jpg")
+    wallpaper_path = os.path.join(os.getcwd() , "images\\Wp1.jpg")
+    background_image = Image.open(wallpaper_path)
     background_image = background_image.resize((1580,800))
     background_image = ImageTk.PhotoImage(background_image)
     background_label = Label(root , image = background_image)

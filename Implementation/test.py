@@ -176,7 +176,7 @@ def testreturnadded(fur_id):
 mydb1 = mysql.connector.connect(host = "localhost",
 								user = "root",
 								passwd = "Mysql_20010316",
-                                database = "frss",)
+                                database = "frss")
     
 global my_cursor1
 my_cursor1 = mydb1.cursor()
