@@ -1,5 +1,5 @@
 import mysql.connector
-from tkinter import messagebox
+
 def testsignup(username):
     ex = "SELECT * FROM customers WHERE username = %s"
     va = (username,)
