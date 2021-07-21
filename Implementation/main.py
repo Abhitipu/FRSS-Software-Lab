@@ -20,9 +20,6 @@ from test import *
 import unittest
 import os
 
-
-
-
 class User(ABC):
     def __init__(self , name , phonenumber , address , loginid , password):
         self.name = name
@@ -1154,7 +1151,7 @@ def Signup():
                     try:
                         server = smtplib.SMTP('smtp.gmail.com', 587)
                         server.starttls()       # starts a secure shell else you get an error
-                        server.login("frental123@gmail.com", "frss1234") # login information
+                        server.login("frental123@gmail.com", "frss20010316") # login information
                         dig = "0123456789"
                         for _ in range(4):
                             otp += random.choice(dig)
@@ -1254,7 +1251,8 @@ if __name__ == '__main__':
     mydb = mysql.connector.connect(host = "localhost",
 								user = "root",
 								passwd = "Mysql_20010316",
-                                database = "frss")
+                                database = "frss",
+                                port = 3306,)
     
     global my_cursor
     my_cursor = mydb.cursor()
