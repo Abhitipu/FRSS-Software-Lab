@@ -1,6 +1,5 @@
 # from FRSS.test import testsignup
 # from FRSS.test import deleteuser
-from abc import ABC , abstractmethod
 from tkinter import *
 import matplotlib.pyplot as plt
 from PIL import ImageTk, Image
@@ -12,13 +11,14 @@ import math
 import smtplib
 import random
 import time
-import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,  NavigationToolbar2Tk
 from test import *
 import unittest
 import os
+import models
+from models import User, Admin, Customer, Furniture 
 
 global user_id , pass_word , is_admin
 

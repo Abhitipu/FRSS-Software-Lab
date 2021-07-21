@@ -1,6 +1,6 @@
 import unittest
-from Users import Admin, Customer
-from Furniture import Furniture
+from .Users import Admin, Customer
+from .Furniture import Furniture
 
 class TestFurnitureMethods(unittest.TestCase):
     myfurniture = Furniture(1, "Center Table", "neelkamal", 4000, "Durable!", "Made of pure wood", "Table", 0, "Imagepath", 2, 365)
