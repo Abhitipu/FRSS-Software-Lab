@@ -36,14 +36,9 @@ def testnotdeleteduser(username):
 
 def testaddfuniture(type, file):
     ex = "SELECT * FROM furnitures WHERE type = %s AND photo = %s"
-    # print("type here" + type)
-    # print("photo here" + file)
     va = (type , file)
-    # print("vaaaa ", va)
     my_cursor1.execute(ex, va)
     res = my_cursor1.fetchall()
-    mydb1.commit()
-    # print(res)
     if len(res) < 1:
         print("ADD FURNITURE : FAILED here")
         return
@@ -61,7 +56,6 @@ def testinvestment(inv):
     exe = "SELECT SUM(investment) FROM admins"
     my_cursor1.execute(exe)
     investment = my_cursor1.fetchall()
-    mydb1.commit()
     if float(investment[0][0]) == inv:
         print("INVESTMENT TEST : PASSED")
         pass
@@ -72,7 +66,6 @@ def testprofit(pro):
     exe = "SELECT SUM(profit) FROM admins"
     my_cursor1.execute(exe)
     profit = my_cursor1.fetchall()
-    mydb1.commit()
     if float(profit[0][0]) == pro:
         print("PROFIT TEST : PASSED")
         pass
@@ -86,7 +79,6 @@ def testchangeprice(type, newprice):
     va = (type,)
     my_cursor1.execute(exe, va)
     res = my_cursor1.fetchall()
-    mydb1.commit()
     if(int(res[0][0]) == int(newprice)):
         print("CHANGE PRICE TEST : PASSED")
     else:
@@ -98,7 +90,6 @@ def testfurnituredelete(fur_id):
     va = (fur_id,)
     my_cursor1.execute(exe, va)
     res = my_cursor1.fetchall()
-    mydb1.commit()
     if len(res) > 0:
         print("DELETE DAMAGED FURNITURE : FAILED")
     else:
@@ -109,7 +100,6 @@ def testreadditionfurniture(fur_id):
     va = (fur_id,)
     my_cursor1.execute(exe, va)
     res = my_cursor1.fetchall()
-    mydb1.commit()
     if (res[0][0]) != 0:
         print("READDITION FURNITURE : FAILED")
     else:
@@ -120,7 +110,6 @@ def testcustomeramountdue(username, amt):
     va = (username , )
     my_cursor1.execute(ex , va)
     res = my_cursor1.fetchall()[0][0]
-    mydb1.commit()
     if amt != res:
         print("AMOUNT DUE TEST : FAILED")
     else:
@@ -131,7 +120,6 @@ def testpaymentdone(username, amount):
     va = (username, )
     my_cursor1.execute(ex , va)
     res = my_cursor1.fetchall()
-    mydb1.commit()
     if res[0][0] != amount:
         print("PAYMENT DONE : PASSED")
     else:
@@ -142,7 +130,6 @@ def testfeedbackinsert(typ, feed):
     va = (typ ,)
     my_cursor1.execute(ex , va)
     res = my_cursor1.fetchall()
-    mydb1.commit()
     if res[0][0] != feed:
         print("FEEDBACK INSERTED : FAILED")
     else:
@@ -165,19 +152,19 @@ def testreturnadded(fur_id):
     va = (int(fur_id),)
     my_cursor1.execute(ex , va)
     res = my_cursor1.fetchall()
-    mydb1.commit()
     if len(res) < 1:
         print("RETURN INITIATED : FAILED")
     else:
         print("RETURN INTIATED : PASSED")
 
-
-
-mydb1 = mysql.connector.connect(host = "localhost",
-								user = "root",
-								passwd = "Mysql_20010316",
-                                database = "frss",
-                                port = 3306,)
-    
-global my_cursor1
-my_cursor1 = mydb1.cursor()
+try:
+    mydb1 = mysql.connector.connect(host = "localhost",
+                                    user = "root",
+                                    passwd = "Mysql_20010316",
+                                    database = "frss",
+                                    port = 3306,)
+except Exception as e:
+    print(f"Could not connect to database! {e}")
+finally:
+    global my_cursor1
+    my_cursor1 = mydb1.cursor()
