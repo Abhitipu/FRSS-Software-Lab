@@ -71,7 +71,6 @@ def CustomerPage(self) :
             new_price = float(old_price[0][0])*(1+new_interest*int(num_days)/100)
             l5 = Label(loan , text = "Total price on your experience with us : " + str(new_price), bg = bgCol ,font=("Centaur", 10, "italic"))
             l5.grid(row = 4 , column = 0 , columnspan = 2, padx=10, pady=10)
-            pass
 
         def buynow():
             fur_id = e1.get()
@@ -90,13 +89,11 @@ def CustomerPage(self) :
             my_cursor.execute(ex , va)
             mydb.commit()
             CustomerPage(customer)
-            pass
 
         b1 = Button(loan , text = "Buy Now" , command = buynow, bg="#002366", font=("Arial", 13, "bold"), fg="white")
         b1.grid(row = 7 , column = 0, padx=10, pady=10, columnspan=2)
         b2 = Button(loan , text = "Check Price" , command = checkprice, bg="#991229", font=("Arial", 13, "bold"), fg="white")
         b2.grid(row = 6 , column = 0, padx=10, pady=10, columnspan=2)
-        pass
 
     def buynowonrent():
         rent = Tk()
@@ -124,7 +121,6 @@ def CustomerPage(self) :
             ne_price = old_price[0][0]*math.ceil(int(num_days)/10)
             l5 = Label(rent , text = "Total price on your experience with us : " + str(ne_price),bg = bgCol, font=("Centaur", 10, "italic"))
             l5.grid(row = 4 , column = 0 , columnspan = 2)
-            pass
 
         def buynow():
             fur_id = e1.get()
@@ -159,14 +155,12 @@ def CustomerPage(self) :
             mydb.commit()
             messagebox.showinfo("Information", "Furniture Purchased !")
             CustomerPage(customer)
-            pass
 
         b2 = Button(rent , text = "Check Price" , command = checkprice, font=("Arial", 13, "bold"), fg="white", bg="#002366")
         b2.grid(row = 5 , column = 0, padx=10, pady=10, columnspan=2)
 
         b1 = Button(rent , text = "Buy Now" , command = buynow, font=("Arial", 13, "bold"), fg="white", bg="#991229")
         b1.grid(row = 6 , column = 0, padx=10, pady=10, columnspan=2)
-        pass
 
     def returnitem():
         item = Tk()
@@ -190,11 +184,9 @@ def CustomerPage(self) :
                 testreturnadded(e6.get())
             else:
                 messagebox.showwarning("Warning", "Enter the ID !")
-            pass
 
         b6 = Button(item , text = "Add to return" , command = addreturn, bg="#800080", font=("Arial", 12, "bold"), fg="white")
         b6.grid(row = 1 , column = 1, padx=10, pady=10)
-        pass
 
     def checkamountdue():
         amount = Tk()
@@ -248,11 +240,9 @@ def CustomerPage(self) :
                 mydb.commit()
             else:
                 messagebox.showwarning("Warning", "No money added !")
-            pass
 
         b1 = Button(amount , text = "Pay amount due !" , command = paynow, bg="#60e84e", font=("Arial", 13, "bold"))
         b1.grid(row=2, column=0, padx=10, pady=10, columnspan=2)
-        pass
 
     def pastorder():
         past = Tk()
@@ -269,7 +259,6 @@ def CustomerPage(self) :
         text_scroll.config(command = my_text.yview)
         for furniture in res:
             my_text.insert(END , "          Furniture id = " + str(furniture[2]) + "\n")
-        pass
 
     def giveFeedback():
         give = Tk()
@@ -302,7 +291,6 @@ def CustomerPage(self) :
         but1 = Button(give , text = "Submit feedback" , command = submitFeedback, bg="#60e84e", font=("Arial", 13, "bold"))
         but1.grid(row = 2 , column = 0 , columnspan = 2, padx=10, pady=10)
 
-        pass
 
     def searchFurniture():
         search = Tk()
@@ -363,17 +351,13 @@ def CustomerPage(self) :
                     my_text2.insert(END , "         Reviews :\n")
                     for feedback in rel:
                         my_text2.insert(END , "         "+ feedback[0] + "\n")
-                        pass
                     my_text2.insert(END , "\n\n")
-            pass
 
         bu1 = Button(frame1 , text = "Search Now" , command = searchNow, bg="red", fg="white", font=("Centaur", 14, "bold"))
         bu1.grid(row = 1 , column = 0 , columnspan = 2, padx=10, pady=10)
-        pass
 
     def logOut():
         Login(customer)
-        pass
     
     BtnBg = "#f3893E"
     buy_now_on_loan = Button(leftFrame , text = "Buy Now On Loan" , width = 35 , command = buynowonloan, bg=BtnBg, font=("Century gothic", 13))
@@ -427,7 +411,4 @@ def CustomerPage(self) :
         my_text.insert(END , "          Reviews :\n")
         for feedback in rel:
             my_text.insert(END , "          " + feedback[0] + "\n")
-            pass
         my_text.insert(END , "\n\n")
-        pass
-
